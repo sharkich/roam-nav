@@ -1,0 +1,16 @@
+{
+  "workspace": "roam-nav",
+  "rosetta_release": "r2",
+  "rosetta_files": {
+    "context": "docs/CONTEXT.md",
+    "architecture": "docs/ARCHITECTURE.md",
+    "implementation": "agents/IMPLEMENTATION.md",
+    "memory": "agents/MEMORY.md",
+    "todo": "docs/TODO.md",
+    "assumptions": "docs/ASSUMPTIONS.md",
+    "techstack": "docs/TECHSTACK.md",
+    "dependencies": "docs/DEPENDENCIES.md",
+    "codemap": "docs/CODEMAP.md",
+    "patterns_index": "docs/PATTERNS/INDEX.md"
+  }
+}

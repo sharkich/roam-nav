@@ -1,0 +1,8 @@
+/* Ensure the palette renders above Roam's sidebar and other overlays */
+#roam-nav-root .bp3-overlay {
+  z-index: 9000;
+}
+
+#roam-nav-root .bp3-omnibar-overlay .bp3-overlay-backdrop {
+  background-color: rgba(16, 22, 26, 0.5);
+}
