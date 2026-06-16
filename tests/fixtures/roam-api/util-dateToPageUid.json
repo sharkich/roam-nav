@@ -1,0 +1,25 @@
+{
+  "_description": "Captured responses for window.roamAlphaAPI.util.dateToPageUid(date).",
+  "_roam_version": "0.13.11-8cdcc4be",
+  "_captured_date": "2026-06-16",
+  "today_result": {
+    "_note": "Result for today's date",
+    "input_iso": "2026-06-16T06:33:57.882Z",
+    "result": "06-16-2026",
+    "type": "string"
+  },
+  "jan_1_result": {
+    "_note": "January 1st — tests zero-padding on month and day",
+    "result": "01-01-2026"
+  },
+  "dec_31_result": {
+    "_note": "December 31st — tests year-end boundary",
+    "result": "12-31-2026"
+  },
+  "_shape": {
+    "return_type": "string",
+    "format": "MM-DD-YYYY",
+    "zero_padded": true,
+    "example": "06-16-2026"
+  }
+}

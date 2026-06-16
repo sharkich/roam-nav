@@ -1,0 +1,24 @@
+{
+  "_description": "Captured responses for window.roamAlphaAPI.util.dateToPageTitle(date).",
+  "_roam_version": "0.13.11-8cdcc4be",
+  "_captured_date": "2026-06-16",
+  "today_result": {
+    "_note": "Result for today's date",
+    "input_iso": "2026-06-16T06:35:29.501Z",
+    "result": "June 16th, 2026",
+    "type": "string"
+  },
+  "round_trip_check": {
+    "_note": "dateToPageTitle -> pageTitleToDate -> dateToPageUid must equal dateToPageUid(today)",
+    "title": "June 16th, 2026",
+    "round_trip_uid": "06-16-2026",
+    "direct_uid": "06-16-2026",
+    "match": true
+  },
+  "_shape": {
+    "return_type": "string",
+    "format": "Month Nth, YYYY",
+    "ordinals": ["1st", "2nd", "3rd", "4th..20th", "21st", "22nd", "23rd", "24th..30th", "31st"],
+    "example": "June 16th, 2026"
+  }
+}

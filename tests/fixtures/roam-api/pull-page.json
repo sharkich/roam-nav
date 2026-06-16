@@ -1,0 +1,33 @@
+{
+  "_description": "Captured responses for window.roamAlphaAPI.pull('[*]', [':block/uid', uid]).",
+  "_roam_version": "0.13.11-8cdcc4be",
+  "_captured_date": "2026-06-16",
+  "found_result": {
+    "_note": "Shape of entity for an existing page ('task/action', uid vRMmbJUHV). Values are types, not real data.",
+    "result_key_types": {
+      ":create/time": "number",
+      ":node/title": "string",
+      ":page/edit-user": "object",
+      ":create/user": "object",
+      ":edit/time": "number",
+      ":page/edit-nonce": "string",
+      ":block/uid": "string",
+      ":db/id": "number",
+      ":page/edit-time": "number",
+      ":page/word-count": "number",
+      ":edit/user": "object",
+      ":restrictions/prevent-clean": "number"
+    },
+    "uid_field": ":block/uid",
+    "title_field": ":node/title"
+  },
+  "null_result": {
+    "_note": "pull on a non-existent uid returns null",
+    "result": null
+  },
+  "_shape": {
+    "return_type": "{ ':node/title': string; ':block/uid': string; [key: string]: unknown } | null",
+    "critical_fields": [":block/uid", ":node/title"],
+    "_note": "Page entities also carry :create/* :edit/* :page/* :db/id :restrictions/* — roam-nav only needs uid + title."
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "_description": "Captured responses for window.roamAlphaAPI.util.pageTitleToDate(title).",
+  "_roam_version": "0.13.11-8cdcc4be",
+  "_captured_date": "2026-06-16",
+  "valid_dnp_title": {
+    "_note": "Result for a valid DNP title. ISO shows local midnight (UTC+3) rendered in UTC.",
+    "input": "June 12th, 2026",
+    "result_iso": "2026-06-11T21:00:00.000Z",
+    "is_date_object": true,
+    "is_null": false,
+    "_timezone_warning": "This is local midnight 2026-06-12 00:00 in UTC+3. Use local date components for math, NOT toISOString slicing."
+  },
+  "non_date_title": {
+    "_note": "Result for a page title that is not a date",
+    "input": "Some Random Page",
+    "result": null,
+    "is_null": true
+  },
+  "jan_1_title": {
+    "_note": "January 1st — ordinal '1st'. ISO shows local midnight rendered in UTC.",
+    "input": "January 1st, 2026",
+    "result_iso": "2025-12-31T22:00:00.000Z"
+  },
+  "_shape": {
+    "return_type": "Date | null",
+    "null_for_non_dates": true,
+    "note": "Returns null (not undefined) for non-date titles — confirmed."
+  }
+}

@@ -155,6 +155,7 @@ Note: `ui.mainWindow.openPage`/`openBlock` are **read-with-side-effect** (the DN
 - `roamAlphaAPI.ui.mainWindow.getOpenPageOrBlockUid()` is the canonical "where am I"; `hashchange` is the cheap trigger; a debounced `MutationObserver` (narrow target, `document.contains` guard) handles re-attach when Roam re-creates the topbar/article.
 - Resolve block-zoom uids → owning page before DNP classification; ignore right-sidebar route (main-window only, per §Context).
 - Rationale: no native route event exists and the three sources (hash / API / DOM) update non-atomically; reading the API uid after a debounced settle avoids the race. Boring + resilient. Alternatives (pure polling / router-hook into Roam internals) rejected: CPU tax / private-API fragility.
+- **⚠️ VERIFIED 2026-06-16 (Story 1.1, Roam v0.13.11):** `getOpenPageOrBlockUid()` is **async — `Promise<string | null>`** (NOT a sync string as assumed). The adapter MUST `await` it. Returns a uid string when a concrete page/block is open; `null` on the scrolling daily-log view or boot. uid stays the source of truth for identity/date-math.
 
 **D-2 — Mount strategy: one long-lived container, perceptual continuity.**
 - A single React 17 root (`ReactDOM.render`) into one plugin-owned node mounted as a sibling **above `.roam-article`**, never inside `.rm-topbar`. Placement computed by a pure `resolveMountPoint(document)`.
@@ -173,6 +174,7 @@ Note: `ui.mainWindow.openPage`/`openBlock` are **read-with-side-effect** (the DN
 
 **D-6 — Date logic: uid-canonical, util-first with fallback.**
 - Page **uid** (`MM-DD-YYYY`) is the source of truth; title (`June 12th, 2026`) is display/fallback. Date math via `util.dateToPageUid`/`pageTitleToDate`, with a hand-rolled ordinal formatter fallback (dual path). "Today" = local device date. Boundary cases (month/year end, leap year) are explicit unit tests.
+- **⚠️ VERIFIED 2026-06-16 (Story 1.1, Roam v0.13.11) — navigation goes by TITLE, not uid:** `openPage({ page: { uid } })` navigates ONLY to pages that already exist; for a non-existent date (the Stepper's core job) it silently no-ops. `openPage({ page: { title } })` navigates universally (existing AND empty dates) — confirmed read-only (no page materialized). **Rule: Date Stepper navigates via `util.dateToPageTitle(date)` → `openPage({ page: { title } })`.** uid remains canonical for identity/date-math only. `openBlock({ block: { uid } })` works for block targets. Timezone: `pageTitleToDate` returns local-midnight Date — use local date components / Roam `util.*` round-trip, never `.toISOString()` day-slicing.
 
 **D-7 — Lifecycle: disposables pattern.**
 - `onload` pushes every side-effect into a disposables array; `onunload` drains it (observer.disconnect, removeEventListener, `unmountComponentAtNode` + node remove, timers, injected styles). Plus a runtime React/Blueprint version-assertion in `onload`.
