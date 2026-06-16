@@ -1,0 +1,28 @@
+{
+  "_description": "Captured responses for window.roamAlphaAPI.ui.mainWindow.getOpenPageOrBlockUid().",
+  "_roam_version": "0.13.11-8cdcc4be",
+  "_captured_date": "2026-06-16",
+  "_async": true,
+  "_async_note": "RESOLVED — this is a Promise<string | null>. The adapter MUST await it. Without await you get an unresolved Promise object.",
+  "on_open_page": {
+    "_note": "After opening an existing page ('task/action') and awaiting — returns that page's uid string",
+    "result": "vRMmbJUHV",
+    "type": "string"
+  },
+  "on_dnp": {
+    "_note": "On a Daily Notes Page the awaited uid is in MM-DD-YYYY form (per util.dateToPageUid). Inferred from DNP uid format; not separately captured.",
+    "result_format": "MM-DD-YYYY",
+    "type": "string"
+  },
+  "on_log_view_or_boot": {
+    "_note": "Awaited result was null when no concrete page was open (scrolling daily-log view / boot state)",
+    "result": null,
+    "type": "object"
+  },
+  "_shape": {
+    "return_type": "Promise<string | null>",
+    "requires_await": true,
+    "string_when": "a concrete page/block is open in the main window",
+    "null_when": "daily-log view or no page resolved"
+  }
+}

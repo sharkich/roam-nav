@@ -1,0 +1,22 @@
+{
+  "_description": "Captured responses for window.roamAlphaAPI.q('[:find ?title ?uid :where ...]').",
+  "_roam_version": "0.13.11-8cdcc4be",
+  "_captured_date": "2026-06-16",
+  "found_result": {
+    "_note": "Lookup by uid for an existing page ('task/action')",
+    "result": [["task/action", "vRMmbJUHV"]],
+    "type": "array",
+    "row_type": "array",
+    "row_shape": ["string (title)", "string (uid)"]
+  },
+  "empty_result": {
+    "_note": "Query for a non-existent uid returns an empty array",
+    "result": [],
+    "type": "array"
+  },
+  "_shape": {
+    "return_type": "Array<[string, string]>",
+    "row_0": "node/title",
+    "row_1": "block/uid"
+  }
+}
